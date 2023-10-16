@@ -33,6 +33,14 @@ const server = http.createServer((request, response) => {
       response.writeHead(200, ContentTypeCSS);
       response.end(data);
     });
+  } else if (request.url === '/scripts/script.js' && req.method === 'GET') {
+    fs.readFile('./static/scripts/script.js', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorLog();
+      }
+      response.writeHead(200, ContentTypeJavaScript);
+      response.end(data);
+    });
   }
 });
 
