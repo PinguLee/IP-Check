@@ -23,8 +23,17 @@ const server = http.createServer((request, response) => {
         serverErrorLog();
       }
       response.writeHead(200, ContentTypeHTML);
+      res.end(data);
     });
-  };
+  } else if (req.url === '/css/style.css' && req.method === 'GET') {
+    fs.readFile('./static/css/style.css', 'utf8', (err, data) => {
+      if (err) {
+        serverErrorLog();
+      }
+      response.writeHead(200, ContentTypeCSS);
+      response.end(data);
+    });
+  }
 });
 
 server.listen(port, () => {
