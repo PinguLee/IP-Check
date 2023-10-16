@@ -1,6 +1,15 @@
 const http = require('http');
 const fs = require('fs');
 const port = 8080;
+const ContentTypeHTML = {
+  'Content-Type': 'text/html'
+};
+const ContentTypeCSS = {
+  'Content-Type': 'text/css'
+};
+const ContentTypeJavaScript = {
+  'Content-Type': 'application/javascript'
+};
 
 const server = http.createServer((request, response) => {
   serverErrorLog = () => {
@@ -13,6 +22,7 @@ const server = http.createServer((request, response) => {
       if (err) {
         serverErrorLog();
       }
+      response.writeHead(200, ContentTypeHTML);
     });
   };
 });
