@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+
 const port = 8080;
 const ContentTypeHTML = {
   'Content-Type': 'text/html'
@@ -17,15 +18,15 @@ const server = http.createServer((request, response) => {
     return response.end('Server Error');
   }
 
-  if (req.url === '/' && req.method === 'GET') {
+  if (request.url === '/' && request.method === 'GET') {
     fs.readFile('./static/index.html', 'utf8', (err, data) => {
       if (err) {
         serverErrorLog();
       }
       response.writeHead(200, ContentTypeHTML);
-      res.end(data);
+      response.end(data);
     });
-  } else if (req.url === '/css/style.css' && request.method === 'GET') {
+  } else if (request.url === '/css/style.css' && request.method === 'GET') {
     fs.readFile('./static/css/style.css', 'utf8', (err, data) => {
       if (err) {
         serverErrorLog();
