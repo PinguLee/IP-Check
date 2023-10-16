@@ -14,7 +14,7 @@ const ContentTypeJavaScript = {
 const server = http.createServer((request, response) => {
   serverErrorLog = () => {
     response.writeHead(500);
-    return response.end('서버 에러');
+    return response.end('Server Error');
   }
 
   if (req.url === '/' && req.method === 'GET') {
@@ -41,6 +41,9 @@ const server = http.createServer((request, response) => {
       response.writeHead(200, ContentTypeJavaScript);
       response.end(data);
     });
+  } else {
+    response.writeHead(404);
+    response.end('404 Not Found');
   }
 });
 
