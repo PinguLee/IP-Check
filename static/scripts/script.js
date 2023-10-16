@@ -1,0 +1,1 @@
+window.location.href = 'https://search.naver.com/search.naver?query=IP+%EC%A3%BC%EC%86%8C+%EC%A1%B0%ED%9A%8C';
