@@ -26,14 +26,6 @@ const server = http.createServer((request, response) => {
       response.writeHead(200, ContentTypeHTML);
       response.end(data);
     });
-  } else if (request.url === '/css/style.css' && request.method === 'GET') {
-    fs.readFile('./static/css/style.css', 'utf8', (err, data) => {
-      if (err) {
-        serverErrorLog();
-      }
-      response.writeHead(200, ContentTypeCSS);
-      response.end(data);
-    });
   } else if (request.url === '/scripts/script.js' && request.method === 'GET') {
     fs.readFile('./static/scripts/script.js', 'utf8', (err, data) => {
       if (err) {
